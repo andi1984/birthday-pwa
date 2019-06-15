@@ -28,16 +28,20 @@ const Event = ({ title, date }) => {
                         return (
                             <p>
                                 <span className="days">
-                                    {!!days && `${days} Tag${days > 1 && 'e'}`}
+                                    {!!days &&
+                                        `${days} Tag${days > 1 ? 'e' : ''}`}
                                 </span>{' '}
                                 <span className="hours">
                                     {!!hours &&
-                                        `${hours} Stunde${hours > 1 && 'n'}`}
+                                        `${hours} Stunde${
+                                            hours > 1 ? 'n' : ''
+                                        }`}
                                 </span>{' '}
                                 <span className="minutes">
                                     {!!minutes &&
-                                        `${minutes} Minute${minutes > 1 &&
-                                            'n'}`}
+                                        `${minutes} Minute${
+                                            minutes > 1 ? 'n' : ''
+                                        }`}
                                 </span>
                             </p>
                         )
