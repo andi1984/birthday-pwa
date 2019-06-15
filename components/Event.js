@@ -73,7 +73,7 @@ const Event = ({ title, date }) => {
                 {({ getRootProps, getInputProps }) => (
                     <section>
                         <div {...getRootProps()}>
-                            <input {...getInputProps()} />
+                            <input aria-label="Hochladen" {...getInputProps()} />
                             <p>
                                 Drag 'n' drop some files here, or click to
                                 select files
@@ -82,7 +82,7 @@ const Event = ({ title, date }) => {
                     </section>
                 )}
             </Dropzone>
-            {!!image && <img src={URL.createObjectURL(image)} />}
+            {!!image && <img alt="Vorschau" src={URL.createObjectURL(image)} />}
         </Fragment>
     )
 }
