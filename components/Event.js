@@ -5,6 +5,7 @@ import Dropzone from 'react-dropzone'
 import germanLocale from 'rc-calendar/lib/locale/de_DE'
 import 'rc-calendar/assets/index.css'
 import moment from 'moment'
+import * as Sentry from '@sentry/browser'
 
 const Event = ({ title, date }) => {
     const dateInMomentFormat = moment(date)
@@ -56,8 +57,7 @@ const Event = ({ title, date }) => {
 
                     reader.onabort = () =>
                         console.log('file reading was aborted')
-                    reader.onerror = () =>
-                        console.log('file reading has failed')
+                    reader.onerror = Sentry.captureException
                     reader.onload = () => {
                         // Do whatever you want with the file contents
                         const arrayBuffer = reader.result
