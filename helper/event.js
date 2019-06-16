@@ -1,12 +1,13 @@
 /**
  * @param {string} eventId
- * @param {Object} eventData
- * @returns {boolean}
+ * @param {Object} allEventData
+ * @returns {Object}
  */
-export const getEventDataByEventQueryParam = (eventId, eventData) => {
-    return eventData.events.find(event => {
+export const getEventDataByEventQueryParam = (eventId, allEventData) => {
+    return allEventData.events.find(event => {
         const eventTimeSinceUnixEpoche = new Date(event.date).getTime()
         return eventTimeSinceUnixEpoche.toString() === eventId
     })
 }
-export default {}
+
+export default { getEventDataByEventQueryParam }

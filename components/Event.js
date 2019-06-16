@@ -73,7 +73,10 @@ const Event = ({ title, date }) => {
                 {({ getRootProps, getInputProps }) => (
                     <section>
                         <div {...getRootProps()}>
-                            <input aria-label="Hochladen" {...getInputProps()} />
+                            <input
+                                aria-label="Hochladen"
+                                {...getInputProps()}
+                            />
                             <p>
                                 Drag 'n' drop some files here, or click to
                                 select files
@@ -83,6 +86,13 @@ const Event = ({ title, date }) => {
                 )}
             </Dropzone>
             {!!image && <img alt="Vorschau" src={URL.createObjectURL(image)} />}
+            {!!image && (
+                <button type="button" onClick={() => {
+                    var formData = new FormData()
+                    formData.append('image', image)
+                    // Lambda function calls passing the form data
+                }}>Hochladen</button>
+            )}
         </Fragment>
     )
 }
