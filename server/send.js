@@ -5,6 +5,7 @@ var multer = require('multer')
 const path = require('path')
 const fs = require('fs')
 var cors = require('cors')
+var mime = require('mime-types')
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, 'multeruploads')
@@ -12,7 +13,11 @@ var storage = multer.diskStorage({
     filename: function(req, file, cb) {
         cb(
             null,
-            file.fieldname + '-' + Date.now() + path.extname(file.originalname)
+            file.fieldname +
+                '-' +
+                Date.now() +
+                '.' +
+                mime.extension(file.mimetype)
         )
     },
 })
@@ -32,7 +37,8 @@ router.get('/another', (req, res) => res.json({ route: req.originalUrl }))
 router.options('*', cors())
 router.post('/', (req, res) => {
     console.log(req.file)
-    res.end(req.file, 'binary')
+    res.type(req.file.mimetype)
+    res.send(req.file)
 })
 
 app.use('/.netlify/functions/send', router)
