@@ -92,10 +92,13 @@ const Event = ({ title, date }) => {
                     onClick={() => {
                         var formData = new FormData()
                         formData.append('image', image)
-                        fetch('/.netlify/functions/send', {
-                            method: 'POST',
-                            body: formData,
-                        }).then(function(response) {
+                        fetch(
+                            'http://localhost:34567/.netlify/functions/send',
+                            {
+                                method: 'POST',
+                                body: formData,
+                            }
+                        ).then(function(response) {
                             debugger
                         })
                         // Lambda function calls passing the form data
