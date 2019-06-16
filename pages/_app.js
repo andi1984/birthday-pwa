@@ -1,6 +1,7 @@
 import React from 'react'
 import App, { Container } from 'next/app'
 import * as Sentry from '@sentry/browser'
+console.log(`https://${process.env.SENTRY_KEY}@sentry.io/1483051`)
 Sentry.init({
     dsn: `https://${process.env.SENTRY_KEY}@sentry.io/1483051`,
 })
