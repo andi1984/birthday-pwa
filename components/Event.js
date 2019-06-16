@@ -53,21 +53,21 @@ const Event = ({ title, date }) => {
             />
             <Dropzone
                 onDrop={acceptedFiles => {
-                    const reader = new FileReader()
+                    acceptedFiles.forEach(file => {
+                        const reader = new FileReader()
 
-                    reader.onabort = () =>
-                        console.log('file reading was aborted')
-                    reader.onerror = Sentry.captureException
-                    reader.onload = () => {
-                        // Do whatever you want with the file contents
-                        const arrayBuffer = reader.result
-                        const blob = new Blob([new Uint8Array(arrayBuffer)])
-                        setImage(blob)
-                    }
-
-                    acceptedFiles.forEach(file =>
+                        reader.onabort = () =>
+                            console.log('file reading was aborted')
+                        reader.onerror = Sentry.captureException
+                        reader.onload = () => {
+                            // Do whatever you want with the file contents
+                            const blob = new Blob([reader.result], {
+                                type: file.type,
+                            })
+                            setImage(blob)
+                        }
                         reader.readAsArrayBuffer(file)
-                    )
+                    })
                 }}
             >
                 {({ getRootProps, getInputProps }) => (

@@ -31,8 +31,8 @@ router.get('/', (req, res) => {
 router.get('/another', (req, res) => res.json({ route: req.originalUrl }))
 router.options('*', cors())
 router.post('/', (req, res) => {
-    res.set('Content-Type', 'application/octet-stream')
-    res.end(res.file, 'binary')
+    console.log(req.file)
+    res.end(req.file, 'binary')
 })
 
 app.use('/.netlify/functions/send', router)
