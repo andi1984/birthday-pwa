@@ -97,11 +97,12 @@ const Event = ({ title, date }) => {
                             {
                                 method: 'POST',
                                 body: formData,
+                                // headers: {
+                                //     'Content-Type':
+                                //         'multipart/form-data; charset=utf-8; boundary="another cool boundary"',
+                                // },
                             }
-                        ).then(function(response) {
-                            debugger
-                        })
-                        // Lambda function calls passing the form data
+                        )
                     }}
                 >
                     Hochladen
