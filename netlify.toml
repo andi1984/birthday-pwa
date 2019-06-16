@@ -11,10 +11,10 @@
   publish = "out/"
 
   # Default build command.
-  command = "npm run deploy"
+  command = "npm run netlify:deploy"
 
   # Directory with the serverless Lambda functions to deploy to AWS.
-  # functions = "project/functions/"
+  functions = "functions/"
   environment = { NODE_VERSION = "12.4.0"}
 
 # # Production context: all deploys from the Production branch set in your site's 

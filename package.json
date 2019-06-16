@@ -1,13 +1,14 @@
 {
     "name": "create-next-example-app",
     "scripts": {
-        "dev": "next",
-        "build": "next build",
-        "export": "next export",
-        "start": "next start",
-        "deploy": "node ./scripts/create-env.js && npm run build && npm run export",
+        "next:dev": "next",
+        "next:build": "next build",
+        "next:export": "next export",
+        "next:start": "next start",
         "test": "jest",
-        "deploy-test": "npm run deploy && netlify dev"
+        "netlify:deploy-local": "npm run netlify:deploy && netlify dev",
+        "netlify:deploy": "node ./scripts/create-env.js && npm run next:build && npm run next:export",
+        "netlify:build-functions": "netlify functions:build --src server --functions functions"
     },
     "dependencies": {
         "@sentry/browser": "^5.4.0",
@@ -30,8 +31,12 @@
         "@babel/preset-env": "^7.4.5",
         "@babel/preset-react": "^7.0.0",
         "babel-jest": "^24.8.0",
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
         "jest": "^24.8.0",
-        "prettier": "^1.18.2"
+        "multer": "^1.4.1",
+        "prettier": "^1.18.2",
+        "serverless-http": "^2.0.2"
     },
     "jest": {
         "verbose": true,
