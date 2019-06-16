@@ -5,7 +5,7 @@
         "build": "next build",
         "export": "next export",
         "start": "next start",
-        "deploy": "npm run build && npm run export",
+        "deploy": "node ./scripts/create-env.js && npm run build && npm run export",
         "test": "jest",
         "deploy-test": "npm run deploy && netlify dev"
     },
