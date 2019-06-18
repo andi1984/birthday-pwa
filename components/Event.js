@@ -6,6 +6,7 @@ import germanLocale from 'rc-calendar/lib/locale/de_DE'
 import 'rc-calendar/assets/index.css'
 import moment from 'moment'
 import * as Sentry from '@sentry/browser'
+import axios from 'axios'
 
 const Event = ({ title, date }) => {
     const dateInMomentFormat = moment(date)
@@ -51,40 +52,14 @@ const Event = ({ title, date }) => {
                     }
                 }}
             />
-            <Dropzone
-                onDrop={acceptedFiles => {
-                    acceptedFiles.forEach(file => {
-                        const reader = new FileReader()
-
-                        reader.onabort = () =>
-                            console.log('file reading was aborted')
-                        reader.onerror = Sentry.captureException
-                        reader.onload = () => {
-                            // Do whatever you want with the file contents
-                            const blob = new Blob([reader.result], {
-                                type: file.type,
-                            })
-                            setImage(blob)
-                        }
-                        reader.readAsArrayBuffer(file)
-                    })
+            <input
+                type="file"
+                name="image"
+                onChange={e => {
+                    console.log(e.target.files[0])
+                    setImage(e.target.files[0])
                 }}
-            >
-                {({ getRootProps, getInputProps }) => (
-                    <section>
-                        <div {...getRootProps()}>
-                            <input
-                                aria-label="Hochladen"
-                                {...getInputProps()}
-                            />
-                            <p>
-                                Drag 'n' drop some files here, or click to
-                                select files
-                            </p>
-                        </div>
-                    </section>
-                )}
-            </Dropzone>
+            />
             {!!image && <img alt="Vorschau" src={URL.createObjectURL(image)} />}
             {!!image && (
                 <button
@@ -92,17 +67,9 @@ const Event = ({ title, date }) => {
                     onClick={() => {
                         var formData = new FormData()
                         formData.append('image', image)
-                        fetch(
-                            'http://localhost:34567/.netlify/functions/send',
-                            {
-                                method: 'POST',
-                                body: formData,
-                                // headers: {
-                                //     'Content-Type':
-                                //         'multipart/form-data; charset=utf-8; boundary="another cool boundary"',
-                                // },
-                            }
-                        )
+                        axios
+                            .post('http://localhost:1222/upload', formData)
+                            .then(res => console.log(res.statusText))
                     }}
                 >
                     Hochladen

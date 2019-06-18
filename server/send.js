@@ -1,47 +1,42 @@
-const express = require('express')
-const serverless = require('serverless-http')
-var bodyParser = require('body-parser')
+var express = require('express')
+var app = express()
 var multer = require('multer')
-const path = require('path')
-const fs = require('fs')
 var cors = require('cors')
-var mime = require('mime-types')
+var serverless = require('serverless-http')
+
+app.use(cors())
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, 'multeruploads')
     },
     filename: function(req, file, cb) {
-        cb(
-            null,
-            file.fieldname +
-                '-' +
-                Date.now() +
-                '.' +
-                mime.extension(file.mimetype)
-        )
+        cb(null, Date.now() + '-' + file.originalname)
     },
 })
-var upload = multer({ storage: storage })
-
-const app = express()
-// for parsing multipart/form-data
-app.use(upload.single('image'))
-
-const router = express.Router()
-router.get('/', (req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/html' })
-    res.write('<h1>Hello from Express.js!</h1>')
-    res.end()
-})
-router.get('/another', (req, res) => res.json({ route: req.originalUrl }))
-router.options('*', cors())
-router.post('/', (req, res) => {
-    console.log(req.file)
-    res.type(req.file.mimetype)
-    res.send(req.file)
+var upload = multer({ storage: storage }).single('image')
+//const router = express.Router()
+app.post('/upload', (req, res) => {
+    upload(req, res, function(err) {
+        if (err instanceof multer.MulterError) {
+            return res.status(500).json(err)
+        } else if (err) {
+            return res.status(500).json(err)
+        }
+        return res.status(200).send(req.file)
+    })
 })
 
-app.use('/.netlify/functions/send', router)
+// app.use('/.netlify/functions/send', (req, res) => {
+//     upload(req, res, function(err) {
+//         if (err instanceof multer.MulterError) {
+//             return res.status(500).json(err)
+//         } else if (err) {
+//             return res.status(500).json(err)
+//         }
+//         return res.status(200).send(req.file)
+//     })
+// })
 
-module.exports = app
-module.exports.handler = serverless(app)
+// module.exports = app
+// module.exports.handler = serverless(app)
+app.listen(1222, () => console.log('listen on 1222'))
