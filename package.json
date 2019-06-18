@@ -20,13 +20,15 @@
         "rc-calendar": "^9.15.0",
         "react": "^16.8.6",
         "react-countdown-now": "^2.1.0",
-        "react-dom": "^16.8.6"
+        "react-dom": "^16.8.6",
+        "styled-components": "^4.3.1"
     },
     "devDependencies": {
         "@babel/core": "^7.4.5",
         "@babel/preset-env": "^7.4.5",
         "@babel/preset-react": "^7.0.0",
         "babel-jest": "^24.8.0",
+        "babel-plugin-styled-components": "^1.10.1",
         "jest": "^24.8.0",
         "prettier": "^1.18.2"
     },

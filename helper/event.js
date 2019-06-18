@@ -5,8 +5,7 @@
  */
 export const getEventDataByEventQueryParam = (eventId, eventData) => {
     return eventData.events.find(event => {
-        const eventTimeSinceUnixEpoche = new Date(event.date).getTime()
-        return eventTimeSinceUnixEpoche.toString() === eventId
+        return event.id === eventId;
     })
 }
 export default {}
