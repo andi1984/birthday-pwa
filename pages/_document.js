@@ -35,7 +35,7 @@ export default class MyDocument extends Document {
                 <Head>
                     {/* Step 5: Output the styles in the head  */}
                     {this.props.styleTags}
-                    </Head>
+                </Head>
                 <body>
                     <Main />
                     <NextScript />
@@ -44,5 +44,3 @@ export default class MyDocument extends Document {
         )
     }
 }
-
-export default MyDocument;
