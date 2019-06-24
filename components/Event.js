@@ -88,7 +88,7 @@ const Event = ({ title, description, date }) => {
                         var formData = new FormData()
                         formData.append('image', image)
                         axios
-                            .post('http://localhost:1222/upload', formData)
+                            .post('/server/send.js', formData)
                             .then(res => console.log(res.statusText))
                     }}
                 >

@@ -1,11 +1,25 @@
-var express = require('express')
-var app = express()
-var multer = require('multer')
-var cors = require('cors')
-var serverless = require('serverless-http')
+const express = require('express')
+const multer = require('multer')
+const multerS3 = require('multer-s3')
+const aws = require('aws-sdk')
+const cors = require('cors')
+
+const app = express()
+
+var s3 = new aws.S3({
+    accessKeyId: process.env.MY_AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.MY_AWS_SECRET_ACCESS_KEY,
+})
+
+const S3_BUCKET_NAME = 'birthday-2019'
 
 app.use(cors())
-var storage = multer.diskStorage({
+var storage = multerS3({
+    s3: s3,
+    bucket: S3_BUCKET_NAME,
+    acl: 'public-read',
+    // Auto detect contet type
+    contentType: multerS3.AUTO_CONTENT_TYPE,
     destination: function(req, file, cb) {
         cb(null, 'multeruploads')
     },
@@ -14,8 +28,7 @@ var storage = multer.diskStorage({
     },
 })
 var upload = multer({ storage: storage }).single('image')
-//const router = express.Router()
-app.post('/upload', (req, res) => {
+app.post('*', (req, res) => {
     upload(req, res, function(err) {
         if (err instanceof multer.MulterError) {
             return res.status(500).json(err)
@@ -26,17 +39,4 @@ app.post('/upload', (req, res) => {
     })
 })
 
-// app.use('/.netlify/functions/send', (req, res) => {
-//     upload(req, res, function(err) {
-//         if (err instanceof multer.MulterError) {
-//             return res.status(500).json(err)
-//         } else if (err) {
-//             return res.status(500).json(err)
-//         }
-//         return res.status(200).send(req.file)
-//     })
-// })
-
-// module.exports = app
-// module.exports.handler = serverless(app)
-app.listen(1222, () => console.log('listen on 1222'))
+module.exports = app
