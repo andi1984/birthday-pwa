@@ -7,13 +7,29 @@ import 'rc-calendar/assets/index.css'
 import moment from 'moment'
 import * as Sentry from '@sentry/browser'
 import axios from 'axios'
+import styled from 'styled-components'
 
-const Event = ({ title, date }) => {
+const Time = styled.time`
+    font-family: monospace;
+`
+const Description = styled.p`
+    text-align: center;
+    font-weight: bold;
+`
+
+const Event = ({ title, description, date }) => {
     const dateInMomentFormat = moment(date)
     const [image, setImage] = useState(null)
     return (
         <Fragment>
             <h1>{title}</h1>
+            <Description>
+                {description}
+                <br />
+                Beginn ist um{' '}
+                <Time>{dateInMomentFormat.local().format('HH:mm')} Uhr</Time>
+            </Description>
+
             <Calendar
                 locale={germanLocale}
                 disabledDate={moment => !moment.isSame(dateInMomentFormat)}
@@ -31,16 +47,20 @@ const Event = ({ title, date }) => {
                     } else {
                         return (
                             <p>
+                                {' '}
+                                Noch{' '}
                                 <span className="days">
                                     {!!days &&
                                         `${days} Tag${days > 1 ? 'e' : ''}`}
-                                </span>{' '}
+                                </span>
+                                {!!hours && ' und '}
                                 <span className="hours">
                                     {!!hours &&
                                         `${hours} Stunde${
                                             hours > 1 ? 'n' : ''
                                         }`}
-                                </span>{' '}
+                                </span>
+                                {!!minutes && ' und '}
                                 <span className="minutes">
                                     {!!minutes &&
                                         `${minutes} Minute${

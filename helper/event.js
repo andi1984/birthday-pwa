@@ -3,10 +3,9 @@
  * @param {Object} allEventData
  * @returns {Object}
  */
-export const getEventDataByEventQueryParam = (eventId, allEventData) => {
-    return allEventData.events.find(event => {
-        const eventTimeSinceUnixEpoche = new Date(event.date).getTime()
-        return eventTimeSinceUnixEpoche.toString() === eventId
+export const getEventDataByEventQueryParam = (eventId, eventData) => {
+    return eventData.events.find(event => {
+        return event.id === eventId;
     })
 }
 
