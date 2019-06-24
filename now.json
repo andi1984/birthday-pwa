@@ -6,5 +6,12 @@
     "builds": [
         { "src": "next.config.js", "use": "@now/next" },
         { "src": "server/**/*.js", "use": "@now/node" }
-    ]
+    ],
+    "build": {
+        "env": {
+            "SENTRY_KEY": "@sentry-key",
+            "MY_AWS_ACCESS_KEY_ID": "@aws-id",
+            "MY_AWS_SECRET_ACCESS_KEY": "@aws-secret"
+        }
+    }
 }
