@@ -19,7 +19,7 @@ const Home = () => {
     }, [])
 
     return (
-        <main>
+        <Container>
             {!!event ? <Event {...event} /> : <p>Ungültiger Link</p>}
             {process.browser && (
                 <button
@@ -31,7 +31,7 @@ const Home = () => {
                     Break sentry
                 </button>
             )}
-        </main>
+        </Container>
     )
 }
 
