@@ -20,17 +20,7 @@ const Home = () => {
 
     return (
         <Container>
-            {!!event ? <Event {...event} /> : <p>Ungültiger Link</p>}
-            {process.browser && (
-                <button
-                    type="button"
-                    onClick={() => {
-                        throw new Error('Break sentry')
-                    }}
-                >
-                    Break sentry
-                </button>
-            )}
+            {!!event ? <Event {...event} /> : <p>Willkommen</p>}
         </Container>
     )
 }
