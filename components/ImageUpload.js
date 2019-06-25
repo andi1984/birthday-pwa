@@ -15,8 +15,8 @@ const ImageUpload = () => {
             <Dropzone multiple={false} onDrop={onDrop} accept={'image/*'}>
                 {({ getRootProps, getInputProps }) => (
                     <div {...getRootProps()}>
-                        <label>Her mit deinen Bildern!</label>
-                        <input {...getInputProps()} />
+                        <label for="image">Her mit deinen Bildern!</label>
+                        <input id="image" name="image" {...getInputProps()} />
                     </div>
                 )}
             </Dropzone>
