@@ -23,6 +23,12 @@
             "title": "Kinderfest",
             "date": "July 14, 2019 12:00:00",
             "description": "Party für die Großen und die Kleinen :)"
+        },
+        {
+            "id": "123",
+            "title": "Kinderfest",
+            "date": "June 25, 2019 19:28:00",
+            "description": "Party für die Großen und die Kleinen :)"
         }
     ]
 }

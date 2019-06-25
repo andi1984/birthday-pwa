@@ -20,7 +20,7 @@ const Home = () => {
 
     return (
         <Container>
-            {!!event ? <Event {...event} /> : <p>Ungültiger Link</p>}
+            {!!event ? <Event {...event} /> : <p>Willkommen</p>}
         </Container>
     )
 }
