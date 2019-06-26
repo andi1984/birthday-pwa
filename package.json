@@ -5,11 +5,7 @@
         "next:build": "next build",
         "next:export": "next export",
         "next:start": "next start",
-        "test": "jest",
-        "netlify:build-functions": "netlify functions:build --src server --functions functions",
-        "netlify:deploy-base": "npm run next:build && npm run next:export",
-        "netlify:deploy-local": "npm run netlify:deploy-base && netlify dev",
-        "netlify:deploy": "node ./scripts/create-env.js && npm run netlify:build-functions && npm run netlify:deploy-base"
+        "test": "jest"
     },
     "dependencies": {
         "@sentry/browser": "^5.4.0",
@@ -24,7 +20,6 @@
         "moment": "^2.24.0",
         "mout": "^1.1.0",
         "multer-s3": "^2.9.0",
-        "netlify-cli": "^2.11.22",
         "next": "^8.1.0",
         "query-string": "^6.7.0",
         "rc-calendar": "^9.15.0",
@@ -39,12 +34,11 @@
         "@babel/preset-env": "^7.4.5",
         "@babel/preset-react": "^7.0.0",
         "babel-jest": "^24.8.0",
+        "babel-plugin-styled-components": "^1.10.1",
         "body-parser": "^1.19.0",
         "express": "^4.17.1",
-        "babel-plugin-styled-components": "^1.10.1",
         "jest": "^24.8.0",
         "multer": "^1.4.1",
-        "netlify-lambda": "^1.4.13",
         "prettier": "^1.18.2",
         "serverless-http": "^2.0.2"
     },
