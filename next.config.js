@@ -9,11 +9,8 @@ module.exports = withCSS(
             cssLoaderOptions: {
                 url: true,
             },
-            generateInDevMode: true,
-            swDest: 'static/service-worker.js',
             workboxOpts: {
-                globPatterns: ['static/**/*'],
-                globDirectory: '.',
+                swDest: 'static/service-worker.js',
                 runtimeCaching: [
                     {
                         urlPattern: /^https?.*/,
