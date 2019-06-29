@@ -9,6 +9,16 @@ module.exports = withOffline(
             cssLoaderOptions: {
                 url: true,
             },
+            workboxOpts: {
+                globPatterns: ['static/**/*'],
+                globDirectory: '.',
+                runtimeCaching: [
+                    {
+                        urlPattern: /.png$/,
+                        handler: 'StaleWhileRevalidate',
+                    },
+                ],
+            },
             webpack: config => {
                 // Fixes npm packages that depend on `fs` module
                 config.node = {
