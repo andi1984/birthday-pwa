@@ -10,6 +10,7 @@ module.exports = withOffline(
                 url: true,
             },
             generateInDevMode: true,
+            devSwSrc: '/_next/static/service-worker.js',
             workboxOpts: {
                 globPatterns: ['static/**/*'],
                 globDirectory: '.',
