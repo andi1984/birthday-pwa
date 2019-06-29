@@ -9,6 +9,7 @@ module.exports = withOffline(
             cssLoaderOptions: {
                 url: true,
             },
+            generateInDevMode: true,
             workboxOpts: {
                 globPatterns: ['static/**/*'],
                 globDirectory: '.',
