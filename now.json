@@ -7,6 +7,16 @@
         { "src": "next.config.js", "use": "@now/next" },
         { "src": "server/**/*.js", "use": "@now/node" }
     ],
+    "routes": [
+        {
+            "src": "^/service-worker.js$",
+            "dest": "/_next/static/service-worker.js",
+            "headers": {
+                "cache-control": "public, max-age=43200, immutable",
+                "Service-Worker-Allowed": "/"
+            }
+        }
+    ],
     "env": {
         "SENTRY_KEY": "@sentry_key",
         "MY_AWS_ACCESS_KEY_ID": "@my_aws_access_key_id",
