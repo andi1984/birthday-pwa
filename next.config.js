@@ -11,6 +11,8 @@ module.exports = withCSS(
             },
             workboxOpts: {
                 swDest: 'static/service-worker.js',
+                globPatterns: ['static/**/*'],
+                globDirectory: '.',
                 runtimeCaching: [
                     {
                         urlPattern: /^https?.*/,
