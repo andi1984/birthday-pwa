@@ -2,9 +2,9 @@ const withCSS = require('@zeit/next-css')
 const withSourceMaps = require('@zeit/next-source-maps')()
 const withOffline = require('next-offline')
 
-module.exports = withOffline(
-    withCSS(
-        withSourceMaps({
+module.exports = withCSS(
+    withSourceMaps(
+        withOffline({
             target: 'serverless',
             cssLoaderOptions: {
                 url: true,
