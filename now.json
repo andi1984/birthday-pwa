@@ -3,5 +3,20 @@
     "name": "birthday-pwa",
     "alias": ["www.andi1984.social", "andi1984.social"],
     "regions": ["bru1", "cdg1"],
-    "builds": [{ "src": "next.config.js", "use": "@now/next" }]
+    "builds": [
+        { "src": "next.config.js", "use": "@now/next" },
+        { "src": "server/**/*.js", "use": "@now/node" }
+    ],
+    "env": {
+        "SENTRY_KEY": "@sentry_key",
+        "MY_AWS_ACCESS_KEY_ID": "@my_aws_access_key_id",
+        "MY_AWS_SECRET_ACCESS_KEY": "@my_aws_secret_access_key"
+    },
+    "build": {
+        "env": {
+            "SENTRY_KEY": "@sentry_key",
+            "MY_AWS_ACCESS_KEY_ID": "@my_aws_access_key_id",
+            "MY_AWS_SECRET_ACCESS_KEY": "@my_aws_secret_access_key"
+        }
+    }
 }
