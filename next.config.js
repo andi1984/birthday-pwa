@@ -10,11 +10,26 @@ module.exports = withCSS(
                 url: true,
             },
             generateInDevMode: true,
-            devSwSrc: '/_next/static/service-worker.js',
+            swDest: 'static/service-worker.js',
             workboxOpts: {
                 globPatterns: ['static/**/*'],
                 globDirectory: '.',
                 runtimeCaching: [
+                    {
+                        urlPattern: /^https?.*/,
+                        handler: 'NetworkFirst',
+                        options: {
+                            cacheName: 'https-calls',
+                            networkTimeoutSeconds: 15,
+                            expiration: {
+                                maxEntries: 150,
+                                maxAgeSeconds: 30 * 24 * 60 * 60, // 1 month
+                            },
+                            cacheableResponse: {
+                                statuses: [0, 200],
+                            },
+                        },
+                    },
                     {
                         urlPattern: /.png$/,
                         handler: 'StaleWhileRevalidate',
