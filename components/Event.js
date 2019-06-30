@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import moment from 'moment'
 import styled from 'styled-components'
+import { PageHeader } from 'antd'
 import FutureView from './FutureView'
 import PastView from './PastView'
 
@@ -19,7 +20,7 @@ const Event = ({ title, description, date }) => {
     )
     return (
         <Fragment>
-            <h1>{title}</h1>
+            <PageHeader title={<h1>{title}</h1>} />
             <Description>
                 {description}
                 {isDateInFuture && (
