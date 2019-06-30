@@ -8,6 +8,15 @@ const Img = styled.img`
     width: auto;
     max-width: 100%;
 `;
+
+const ImageDropZone = styled.div`
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    margin: 20px;
+    background: #eee;
+    text-align: center;
+`;
 const ImageUpload = () => {
     const [image, setImage] = useState(null)
     const onDrop = useCallback(acceptedFiles => {
@@ -20,10 +29,10 @@ const ImageUpload = () => {
         <Fragment>
             <Dropzone multiple={false} onDrop={onDrop} accept={'image/*'}>
                 {({ getRootProps, getInputProps }) => (
-                    <div {...getRootProps()}>
+                    <ImageDropZone {...getRootProps()}>
                         <label htmlFor="image">Her mit deinen Bildern!</label>
                         <input id="image" name="image" {...getInputProps()} />
-                    </div>
+                    </ImageDropZone>
                 )}
             </Dropzone>
 
