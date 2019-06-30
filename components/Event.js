@@ -10,7 +10,7 @@ const Time = styled.time`
 `
 const Description = styled.p`
     text-align: center;
-    font-weight: bold;
+    font-size: 1em;
 `
 
 const Event = ({ title, description, date }) => {
