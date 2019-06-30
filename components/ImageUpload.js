@@ -1,7 +1,13 @@
 import React, { Fragment, useCallback, useState } from 'react'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
+import styled from 'styled-components';
 
+const Img = styled.img`
+    height: auto;
+    width: auto;
+    max-width: 100%;
+`;
 const ImageUpload = () => {
     const [image, setImage] = useState(null)
     const onDrop = useCallback(acceptedFiles => {
@@ -15,13 +21,13 @@ const ImageUpload = () => {
             <Dropzone multiple={false} onDrop={onDrop} accept={'image/*'}>
                 {({ getRootProps, getInputProps }) => (
                     <div {...getRootProps()}>
-                        <label for="image">Her mit deinen Bildern!</label>
+                        <label htmlFor="image">Her mit deinen Bildern!</label>
                         <input id="image" name="image" {...getInputProps()} />
                     </div>
                 )}
             </Dropzone>
 
-            {!!image && <img alt="Vorschau" src={URL.createObjectURL(image)} />}
+            {!!image && <Img alt="Vorschau" src={URL.createObjectURL(image)} />}
             {!!image && (
                 <button
                     type="button"
