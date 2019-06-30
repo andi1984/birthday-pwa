@@ -2,12 +2,38 @@ const withCSS = require('@zeit/next-css')
 const withSourceMaps = require('@zeit/next-source-maps')()
 const withOffline = require('next-offline')
 
-module.exports = withOffline(
-    withCSS(
-        withSourceMaps({
+module.exports = withCSS(
+    withSourceMaps(
+        withOffline({
             target: 'serverless',
             cssLoaderOptions: {
                 url: true,
+            },
+            workboxOpts: {
+                swDest: 'static/service-worker.js',
+                globPatterns: ['static/**/*'],
+                globDirectory: '.',
+                runtimeCaching: [
+                    {
+                        urlPattern: /^https?.*/,
+                        handler: 'NetworkFirst',
+                        options: {
+                            cacheName: 'https-calls',
+                            networkTimeoutSeconds: 15,
+                            expiration: {
+                                maxEntries: 150,
+                                maxAgeSeconds: 30 * 24 * 60 * 60, // 1 month
+                            },
+                            cacheableResponse: {
+                                statuses: [0, 200],
+                            },
+                        },
+                    },
+                    {
+                        urlPattern: /.png$/,
+                        handler: 'StaleWhileRevalidate',
+                    },
+                ],
             },
             webpack: config => {
                 // Fixes npm packages that depend on `fs` module
