@@ -1,16 +1,17 @@
 import React, { Fragment, useState } from 'react'
 import moment from 'moment'
 import styled from 'styled-components'
-import { PageHeader } from 'antd'
+import { PageHeader, Divider } from 'antd'
 import FutureView from './FutureView'
 import PastView from './PastView'
+import ImagePreview from './ImagePreview'
 
 const Time = styled.time`
     font-family: monospace;
 `
 const Description = styled.p`
     text-align: center;
-    font-weight: bold;
+    font-size: 1em;
 `
 
 const Event = ({ title, description, date }) => {
@@ -18,6 +19,7 @@ const Event = ({ title, description, date }) => {
     const [isDateInFuture, setIsDateInFuture] = useState(
         moment().diff(dateInMomentFormat) < 0
     )
+    
     return (
         <Fragment>
             <PageHeader title={<h1>{title}</h1>} />
@@ -41,6 +43,8 @@ const Event = ({ title, description, date }) => {
             ) : (
                 <PastView momentDate={dateInMomentFormat} />
             )}
+            <Divider orientation="left">Erinnerungen</Divider>
+            <ImagePreview />
         </Fragment>
     )
 }

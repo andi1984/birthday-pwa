@@ -3,7 +3,7 @@ import Dropzone from 'react-dropzone'
 import axios from 'axios'
 import styled from 'styled-components'
 import { Icon, Button, Divider } from 'antd'
-const Img = styled.img`
+export const Img = styled.img`
     height: auto;
     width: auto;
     max-width: 100%;
