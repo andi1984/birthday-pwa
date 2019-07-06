@@ -21,10 +21,10 @@ app.get('*', (req, res) => {
     cloudinary.v2.api.resources(
         { type: 'upload', prefix: 'Birthday PWA', max_results: 200 },
         function(error, result) {
-            const images = result.resources.map(({ width, height, url }) => ({
+            const images = result.resources.map(({ width, height, secure_url }) => ({
                 width,
                 height,
-                url,
+                url: secure_url,
             }))
 
             const pickedImages = Array.from(Array(10).keys()).map(() =>
