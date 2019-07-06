@@ -20,7 +20,10 @@
     "env": {
         "SENTRY_KEY": "@sentry_key",
         "MY_AWS_ACCESS_KEY_ID": "@my_aws_access_key_id",
-        "MY_AWS_SECRET_ACCESS_KEY": "@my_aws_secret_access_key"
+        "MY_AWS_SECRET_ACCESS_KEY": "@my_aws_secret_access_key",
+        "CLOUDINARY_CLOUD_NAME": "@cloudinary_cloud_name",
+        "CLOUDINARY_API_KEY": "@cloudinary_api_key",
+        "CLOUDINARY_API_SECRET": "@cloudinary_api_secret"
     },
     "build": {
         "env": {
