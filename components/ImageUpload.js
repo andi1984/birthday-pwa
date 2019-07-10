@@ -64,7 +64,12 @@ const ImageUpload = () => {
                                     alert('Yay, danke dir!')
                                 }
                             })
-                            .catch(e => alert('Whoops, da ging was schief. Nicht verzagen, Andi fragen!'))
+                            .catch(e =>
+                                alert(
+                                    `Whoops, da ging was schief. Nicht verzagen, Andi fragen!
+                                    ${e.message}`
+                                )
+                            )
                             .finally(() => setLoading(false))
                     }}
                     shape="round"
