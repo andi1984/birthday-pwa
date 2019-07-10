@@ -27,7 +27,10 @@ var storage = multerS3({
         cb(null, Date.now() + '-' + file.originalname)
     },
 })
-var upload = multer({ storage: storage }).single('image')
+var upload = multer({
+    storage: storage,
+    limits: { fileSize: 10000000 },
+}).single('image')
 app.post('*', (req, res) => {
     upload(req, res, function(err) {
         if (err instanceof multer.MulterError) {
