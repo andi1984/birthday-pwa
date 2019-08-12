@@ -1,7 +1,6 @@
 {
     "version": 2,
     "name": "birthday-pwa",
-    "alias": ["www.andi1984.social", "andi1984.social"],
     "regions": ["bru1", "cdg1"],
     "builds": [
         { "src": "next.config.js", "use": "@now/next" },
