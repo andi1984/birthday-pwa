@@ -1,34 +1,10 @@
 {
     "events": [
         {
-            "id": "1562691600000",
-            "title": "Familienfeier",
-            "date": "July 9, 2019 19:00:00",
-            "description": "Kleine Feier im engsten Familienkreis"
-        },
-        {
-            "id": "1562949000000",
-            "title": "Nachbarschafts-Abend",
-            "date": "July 12, 2019 18:30:00",
-            "description": "Kleine Feier mit den besten Nachbarn der Welt :)"
-        },
-        {
-            "id": "1563033600000",
-            "title": "Party-Abend",
-            "date": "July 13, 2019 18:00:00",
-            "description": "Pump it up!"
-        },
-        {
-            "id": "1563098400000",
-            "title": "Kinderfest",
-            "date": "July 14, 2019 12:00:00",
-            "description": "Party für die Großen und die Kleinen :)"
-        },
-        {
-            "id": "123",
-            "title": "Kinderfest",
-            "date": "June 25, 2019 19:28:00",
-            "description": "Party für die Großen und die Kleinen :)"
+            "id": "4711",
+            "title": "Einschulungsfeier",
+            "date": "Aug 22, 2020 14:00:00",
+            "description": "Nele & Mia - Einschulungsfeier"
         }
     ]
 }
