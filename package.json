@@ -41,7 +41,7 @@
         "@babel/preset-env": "^7.4.5",
         "@babel/preset-react": "^7.0.0",
         "babel-jest": "^24.8.0",
-        "babel-plugin-styled-components": "^1.10.1",
+        "babel-plugin-styled-components": "^1.11.1",
         "express": "^4.17.1",
         "jest": "^24.8.0",
         "multer": "^1.4.1",
